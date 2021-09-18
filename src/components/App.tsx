@@ -30,7 +30,7 @@ export default function App() {
   const [month, setMonth] = useState(currMonth);
   const [year, setYear] = useState(currYear);
 
-  function populateTiles(year: number, month: number) {
+  function generateDates(year: number, month: number) {
     var dates: DateObj[] = [];
     //day in numbers 0-6 that the month starts
     const firstDayNum = new Date(year, month).getDay();
@@ -78,7 +78,7 @@ export default function App() {
     //push next month days
     return dates;
   }
-  console.log(populateTiles(2021, 9));
+  console.log(generateDates(2021, 9));
 
   function handleLogin() {
     signInWithRedirect(auth, provider);
