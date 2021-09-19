@@ -1,0 +1,61 @@
+
+const data structure
+
+{
+    'localeString': []
+}
+
+//year span 5 <-current-> 5 
+
+
+Interface Budget{
+    name: string,
+    amount: number,
+    freq: weekly, monthly, annual
+    start date: default = now, custom
+    end date: default = forever, custom
+    keys: string[] -- generated on front-end
+}
+
+after getting Budget[] from db
+generate keys from start,end,freq for each Budget
+
+
+
+
+
+
+data structure 1
+date - 365;
+
+date 1: no expense
+date 2: [array of expenses]
+date 3: 
+date 4:
+date 5:
+...
+date 365:
+when rendering calendar - each cell can access each key
+
+for each render 
+time -> n cells 
+space -> k dates * m expenses
+
+add expense
+time -> 
+
+
+
+
+
+data structure 2
+expense 1 : [array of dates]
+expense 2 : [array of dates]
+expense 3 : [array of dates]
+
+when rendering calendar
+check if date included in dates array for each expense
+
+for each render
+time -> n cells * m expenses * o dates
+space -> m expenses * o dates
