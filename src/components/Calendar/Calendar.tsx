@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import generateDates from "./generateDates";
 
 //prettier-ignore
@@ -6,7 +6,6 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sep','Oct
 const days = ["S", "M", "T", "W", "TH", "F", "SA"];
 
 export default function Calendar() {
-  console.log("renders");
   const { current: currDate } = useRef<Date>(new Date());
   const currMonth = currDate.getMonth(); //0-11
   const currYear = currDate.getFullYear(); //curr year YYYY
@@ -17,8 +16,10 @@ export default function Calendar() {
   const nextMonth = () => setMonth((p) => (p >= 11 ? 0 : p + 1));
   const prevMonth = () => setMonth((p) => (p <= 0 ? 11 : p - 1));
 
-  const dates = generateDates(year, month, currYear, currMonth, currDateNum);
-  console.log(dates);
+  const dates = useMemo(
+    () => generateDates(year, month, currYear, currMonth, currDateNum),
+    [year, month]
+  );
 
   return (
     <div>
