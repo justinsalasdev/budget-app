@@ -1,32 +1,33 @@
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import Calendar from "./Calendar/Calendar";
-import { DateTime } from "luxon";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { budgetSchema } from "./budgetSchema";
 
-interface Values {
-  amount: number;
-  name: string;
-  start?: string;
-  end?: string;
-}
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Budget as _Budget } from "./budgetSchema";
+import { z } from "zod";
 
-const dt = DateTime.local();
+type Budget = z.infer<typeof _Budget>;
+
+
+const currDate = new Date();
+const year = currDate.getFullYear()
+const month = currDate.getMonth()
+const dayNum = currDate.getDate()
 
 export default function App() {
-  const { register, handleSubmit, formState } = useForm<Values>({
+  const { register, handleSubmit, formState } = useFormas({
     mode: "onChange",
-    resolver: yupResolver(budgetSchema),
-    defaultValues: {
-      amount: 0,
-      name: "",
-      start: dt.toISODate(),
-      end: dt.toISODate(),
-    },
+    resolver: zodResolver(_Budget),
+    defaultValue:{
+      name: '',
+      amount:0,
+      start: `${year}-${month}-${dayNum}`,
+      end: `${year}-${month}-${dayNum}`
+    }
   });
-  function submitHandler(data: Values) {
+  function submitHandler(data: Budget) {
     console.log(data, formState);
   }
+
 
   return (
     <div>

@@ -1,11 +1,9 @@
-import * as yup from "yup";
-export const budgetSchema = yup.object().shape({
-  name: yup.string().required("name is required"),
-  amount: yup
-    .number()
-    .required("amount is required")
-    .typeError("amount must be a number")
-    .positive("amount can't be negative"),
-  start: yup.string(),
-  end: yup.string(),
+import { z } from "zod";
+
+export const Budget = z.object({
+  name: z.string().nonempty({ message: "name is required" }),
+  // amount: z.string().nonempty({ message: "name is required" }),
+  amount: z.preprocess(val => Number(val), z.number().positive({message:''})),
+  start: z.string(),
+  end: z.string(),
 });
