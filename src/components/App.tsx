@@ -14,6 +14,7 @@ export default function App() {
     defaultValues: {
       frequency: "weekly",
       start: dt.toISODate(),
+      color: "bg-gray-900",
     },
   });
 

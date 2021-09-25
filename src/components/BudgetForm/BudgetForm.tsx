@@ -1,3 +1,4 @@
+import Colors from "../Colors/Colors";
 import Date from "../Date/Date";
 import Option from "../Option/Option";
 import useBudgetForm from "./useBugdetForm";
@@ -28,6 +29,8 @@ export default function BudgetForm() {
 
       <label htmlFor="start">Start</label>
       <Date id="start" placeHolder="now" />
+
+      <Colors />
 
       <button
         disabled={isLoading}
