@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
 import { useMemo, useRef, useState } from "react";
+import Day from "../Day/Day";
 import generateDates from "./generateDates";
 
 //prettier-ignore
@@ -59,9 +60,9 @@ export default function Calendar() {
           ))}
         </ul>
         <ul className="bg-red-400 grid grid-cols-7 grid-rows-6 place-items-center w-96 h-96">
-          {dates.map((date, i) => {
-            return <li key={i}>{date.dateNum}</li>;
-          })}
+          {dates.map((date, i) => (
+            <Day dateObj={date} index={i} />
+          ))}
         </ul>
       </div>
     </div>

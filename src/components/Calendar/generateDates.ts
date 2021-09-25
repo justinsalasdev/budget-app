@@ -3,7 +3,7 @@ import { DateObj } from "./types";
 const numTiles = 42;
 
 //vanilla calendar idea from Amit Gupta - from dev.to
-//react implementation by me ^^
+//slightly diff luxon implementation by me ^^
 export default function generateDates(
   year: number,
   month: number,

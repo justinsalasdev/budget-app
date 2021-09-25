@@ -17,6 +17,7 @@ interface Props {
 
 export interface State extends _Budget {
   id: string;
+  keys: string[];
 }
 
 const initialState: State[] = [];
@@ -34,8 +35,8 @@ export default function BudgetProvider(props: Props) {
       querySnapshot.forEach((doc) => {
         const data = doc.data();
         const id = doc.id;
-        generateKeys(data.start, data.frequency);
-        _data.push({ ...data, id });
+        const keys = generateKeys(data.start, data.frequency);
+        _data.push({ ...data, id, keys });
       });
 
       setBudget(_data);

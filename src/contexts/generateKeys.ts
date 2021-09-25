@@ -1,9 +1,23 @@
-import { DateTime } from "luxon";
+import { DateTime, DurationObjectUnits } from "luxon";
 import { Freq } from "../components/budgetSchema";
 
-const yearSpan = 3;
+const yearRange = 1;
 
 export default function generateKeys(start: string, freq: Freq) {
-  const dtStart = DateTime.fromISO(start);
-  const endDate = dtStart.plus({ years: 3 });
+  let dtStart = DateTime.fromISO(start);
+  const endDate = dtStart.plus({ years: yearRange });
+  const keys: string[] = [];
+  const intervals: { [key in Freq]: DurationObjectUnits } = {
+    weekly: { weeks: 1 },
+    monthly: { months: 1 },
+    annual: { years: 1 },
+  };
+
+  while (dtStart <= endDate) {
+    const key = dtStart.toISODate();
+    keys.push(key);
+    dtStart = dtStart.plus(intervals[freq]);
+  }
+
+  return keys;
 }
