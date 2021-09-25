@@ -12,6 +12,7 @@ export default function App() {
     mode: "onChange",
     resolver: zodResolver(_Budget),
     defaultValues: {
+      type: "expense",
       frequency: "weekly",
       start: dt.toISODate(),
       color: "bg-gray-900",
