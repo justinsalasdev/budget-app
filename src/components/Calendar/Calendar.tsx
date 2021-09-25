@@ -1,24 +1,35 @@
+import { DateTime } from "luxon";
 import { useMemo, useRef, useState } from "react";
 import generateDates from "./generateDates";
 
 //prettier-ignore
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sep','Oct', 'Nov','Dec']
+const months = ['','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sep','Oct', 'Nov','Dec']
 const days = ["S", "M", "T", "W", "TH", "F", "SA"];
 
 export default function Calendar() {
-  const { current: currDate } = useRef<Date>(new Date());
-  const currMonth = currDate.getMonth(); //0-11
-  const currYear = currDate.getFullYear(); //curr year YYYY
-  const currDateNum = currDate.getDate();
-  const [month, setMonth] = useState(currMonth);
+  const { current: dt } = useRef<DateTime>(DateTime.local());
+  const [month, setMonth] = useState(dt.month);
   // eslint-disable-next-line
-  const [year, setYear] = useState(currYear);
+  const [year, setYear] = useState(dt.year);
 
-  const nextMonth = () => setMonth((p) => (p >= 11 ? 0 : p + 1));
-  const prevMonth = () => setMonth((p) => (p <= 0 ? 11 : p - 1));
+  const nextMonth = () => {
+    if (month >= 12) {
+      setYear((_year) => _year + 1);
+    }
+    setMonth((p) => (p >= 12 ? 1 : p + 1));
+  };
+
+  const prevMonth = () => {
+    if (month <= 1) {
+      setYear((_year) => _year - 1);
+    }
+    setMonth((p) => (p <= 1 ? 12 : p - 1));
+  };
+
+  console.log(year, month);
 
   const dates = useMemo(
-    () => generateDates(year, month, currYear, currMonth, currDateNum),
+    () => generateDates(year, month, dt),
     // eslint-disable-next-line
     [year, month]
   );

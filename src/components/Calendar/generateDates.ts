@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { DateObj } from "./types";
 const numTiles = 42;
 
@@ -6,24 +7,21 @@ const numTiles = 42;
 export default function generateDates(
   year: number,
   month: number,
-  currYear: number,
-  currMonth: number,
-  currDateNum: number
+  currDt: DateTime
 ) {
+  //create dt with year, and month
+  const dtCurr = DateTime.local(year, month);
+  const dtPrev = dtCurr.minus({ months: 1 });
+
+  const firstDayNum = dtCurr.weekday; // 1-7; 1 is monday
+  const numDaysPrevMonth = dtPrev.daysInMonth;
+  const numDaysCurrMonth = dtCurr.daysInMonth;
+
   const dates: DateObj[] = [];
-  //day in numbers 0-6 that the month starts
-  const firstDayNum = new Date(year, month).getDay();
-
-  //month day starts @ 1: get day before 1 of the next month
-  const numDaysCurrMonth = new Date(year, month + 1, 0).getDate();
-
-  //get the day before the first day of the current month
-  const numDaysPrevMonth = new Date(year, month, 0).getDate();
-
-  //push prev month days
+  // //push prev month days
   for (let i = 1; i <= firstDayNum; i++) {
     const prevMonthDateNum = numDaysPrevMonth - firstDayNum + i;
-    const key = `${year}-${month - 1}-${prevMonthDateNum}`;
+    const key = DateTime.local(year, month - 1, prevMonthDateNum).toISODate();
     const dateNum = prevMonthDateNum;
 
     dates.push({ key, dateNum });
@@ -31,14 +29,13 @@ export default function generateDates(
 
   //push curr month days
   for (let i = 1; i <= numDaysCurrMonth; i++) {
-    const key = `${year}-${month}-${i}`;
+    const key = DateTime.local(year, month, i).toISODate();
+    const isCurrDay = key === currDt.toISODate();
     const dateNum = i;
-    const isCurrDay =
-      `${year}-${month}-${i}` === `${currYear}-${currMonth}-${currDateNum}`;
 
     dates.push(
       isCurrDay
-        ? { key, dateNum, isCurrDay: true }
+        ? { key, dateNum, isCurrMonth: true, isCurrDay: true }
         : { key, dateNum, isCurrMonth: true }
     );
   }
@@ -47,12 +44,11 @@ export default function generateDates(
   if (dates.length < numTiles) {
     const count = numTiles - dates.length;
     for (let i = 1; i <= count; i++) {
-      const key = `${year}-${month + 1}-${i}`;
+      const key = DateTime.local(year, month + 1, i).toISODate();
       const dateNum = i;
       dates.push({ key, dateNum });
     }
   }
 
-  //push next month days
   return dates;
 }
