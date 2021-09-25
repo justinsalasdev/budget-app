@@ -26,7 +26,7 @@ export default function generateDates(
     const key = `${year}-${month - 1}-${prevMonthDateNum}`;
     const dateNum = prevMonthDateNum;
 
-    dates.push({ key, dateNum, isNotCurrMonth: true });
+    dates.push({ key, dateNum });
   }
 
   //push curr month days
@@ -37,7 +37,9 @@ export default function generateDates(
       `${year}-${month}-${i}` === `${currYear}-${currMonth}-${currDateNum}`;
 
     dates.push(
-      isCurrDay ? { key, dateNum, isCurrDay: true } : { key, dateNum }
+      isCurrDay
+        ? { key, dateNum, isCurrDay: true }
+        : { key, dateNum, isCurrMonth: true }
     );
   }
 
@@ -47,7 +49,7 @@ export default function generateDates(
     for (let i = 1; i <= count; i++) {
       const key = `${year}-${month + 1}-${i}`;
       const dateNum = i;
-      dates.push({ key, dateNum, isNotCurrMonth: true });
+      dates.push({ key, dateNum });
     }
   }
 

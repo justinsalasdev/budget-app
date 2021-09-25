@@ -1,6 +1,6 @@
 export interface DateObj {
   key: string;
   dateNum: number;
-  isNotCurrMonth?: true;
+  isCurrMonth?: true;
   isCurrDay?: true;
 }

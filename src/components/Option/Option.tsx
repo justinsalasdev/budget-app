@@ -1,13 +1,13 @@
 import { useFormContext } from "react-hook-form";
 import { Freq } from "../budgetSchema";
 
-interface Option {
+interface Props {
   id: string;
   name: string;
   value: Freq;
 }
 
-export default function Option(props: Option) {
+export default function Option(props: Props) {
   const { register } = useFormContext();
   return (
     <div className="flex items-center p-2 bg-red-300 rounded-sm">

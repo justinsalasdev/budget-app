@@ -1,10 +1,10 @@
 import { FormProvider, useForm } from "react-hook-form";
 import Calendar from "./Calendar/Calendar";
 import { DateTime } from "luxon";
-import { z } from "zod";
 import { Budget as _Budget } from "./budgetSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import BudgetForm from "./BudgetForm/BudgetForm";
+import Budget from "./Budget/Budget";
 
 const dt = DateTime.local();
 export default function App() {
@@ -23,6 +23,7 @@ export default function App() {
       <FormProvider {...methods}>
         <BudgetForm />
       </FormProvider>
+      <Budget />
     </div>
   );
 }

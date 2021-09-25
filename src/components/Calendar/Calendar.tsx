@@ -11,6 +11,7 @@ export default function Calendar() {
   const currYear = currDate.getFullYear(); //curr year YYYY
   const currDateNum = currDate.getDate();
   const [month, setMonth] = useState(currMonth);
+  // eslint-disable-next-line
   const [year, setYear] = useState(currYear);
 
   const nextMonth = () => setMonth((p) => (p >= 11 ? 0 : p + 1));
@@ -18,6 +19,7 @@ export default function Calendar() {
 
   const dates = useMemo(
     () => generateDates(year, month, currYear, currMonth, currDateNum),
+    // eslint-disable-next-line
     [year, month]
   );
 

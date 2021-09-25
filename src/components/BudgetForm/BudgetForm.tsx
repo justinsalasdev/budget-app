@@ -1,9 +1,9 @@
 import Date from "../Date/Date";
 import Option from "../Option/Option";
-import useBudget from "./useBugdet";
+import useBudgetForm from "./useBugdetForm";
 
 export default function BudgetForm() {
-  const { handleSubmit, register } = useBudget();
+  const { handleSubmit, register, isLoading } = useBudgetForm();
   return (
     <form
       onSubmit={handleSubmit}
@@ -30,6 +30,7 @@ export default function BudgetForm() {
       <Date id="start" placeHolder="now" />
 
       <button
+        disabled={isLoading}
         className="bg-yellow-400 py-1 uppercase text-gray-100"
         type="submit"
       >
