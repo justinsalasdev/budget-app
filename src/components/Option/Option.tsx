@@ -1,10 +1,10 @@
 import { useFormContext } from "react-hook-form";
-import { Freq } from "../budgetSchema";
+import { BudgetType, Freq } from "../budgetSchema";
 
 interface Props {
   id: string;
   name: string;
-  value: Freq;
+  value: Freq | BudgetType;
 }
 
 export default function Option(props: Props) {

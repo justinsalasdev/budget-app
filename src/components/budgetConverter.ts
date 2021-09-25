@@ -8,8 +8,9 @@ export const budgetConverter: FirestoreDataConverter<_Budget> = {
   },
   fromFirestore: (snapshot, options) => {
     //extract data with any type
-    const { name, amount, start, frequency, color } = snapshot.data(options);
+    const { name, amount, start, frequency, color, type } =
+      snapshot.data(options);
     //cast with _Budget type
-    return { name, amount, start, frequency, color };
+    return { name, amount, start, frequency, color, type };
   },
 };
