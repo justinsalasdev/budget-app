@@ -11,5 +11,6 @@ export const Budget = z.object({
     z.number().positive({ message: "amount is invalid" })
   ),
   start: z.string(),
+  color: z.string(),
   frequency: zodFreq,
 });
