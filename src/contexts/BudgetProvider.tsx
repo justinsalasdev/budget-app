@@ -15,39 +15,79 @@ interface Props {
   children: ReactNode;
 }
 
-export interface State extends _Budget {
+interface DaySums {
+  sumExpenses: number;
+  sumIncome: number;
+}
+
+interface Timeline {
+  [index: string]: DaySums;
+}
+
+interface Budget extends _Budget {
   id: string;
   keys: string[];
 }
 
-const initialState: State[] = [];
+interface GetValue {
+  budgets: Budget[];
+  timeline: Timeline;
+}
 
-const getContext = createContext<State[]>(initialState);
+const initialState = {
+  budgets: [],
+  timeline: {},
+};
+
+const getContext = createContext<GetValue>(initialState);
 
 export default function BudgetProvider(props: Props) {
-  const [budget, setBudget] = useState<State[]>(initialState);
+  const [budgets, setBudgets] = useState<Budget[]>([]);
+  const [timeline, setTimeline] = useState<Timeline>({});
+
+  console.log(timeline);
 
   useEffect(() => {
     const _ref = collection(db, "budget").withConverter(budgetConverter);
     const q = query(_ref);
     const unsub = onSnapshot(q, (querySnapshot) => {
-      const _data: State[] = [];
+      const _data: Budget[] = [];
+      //reset current timeline
+      const _timeline: Timeline = {};
+
       querySnapshot.forEach((doc) => {
         const data = doc.data();
         const id = doc.id;
+
+        //generate keys for calendar view
         const keys = generateKeys(data.start, data.frequency);
         _data.push({ ...data, id, keys });
+
+        //build timeline for analytics
+        const income = data.type === "income" ? data.amount : 0;
+        const expense = data.type === "expense" ? data.amount : 0;
+        keys.forEach((key) => {
+          const daySum = _timeline[key];
+          if (!daySum) {
+            _timeline[key] = { sumExpenses: 0, sumIncome: 0 };
+          } else {
+            _timeline[key].sumExpenses += expense;
+            _timeline[key].sumIncome += income;
+          }
+        });
+        //update timeline
       });
 
-      setBudget(_data);
+      setBudgets(_data);
+      setTimeline(_timeline);
     });
     return () => unsub();
   }, []);
 
-  console.log(budget);
-
   return (
-    <getContext.Provider value={budget}>{props.children}</getContext.Provider>
+    <getContext.Provider value={{ budgets, timeline }}>
+      {props.children}
+    </getContext.Provider>
   );
 }
 
