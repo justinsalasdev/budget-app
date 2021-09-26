@@ -4,14 +4,11 @@ import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import BudgetProvider from "./contexts/BudgetProvider";
-import TimelineProvider from "./contexts/TimeLineProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <BudgetProvider>
-      <TimelineProvider>
-        <App />
-      </TimelineProvider>
+      <App />
     </BudgetProvider>
   </React.StrictMode>,
   document.getElementById("root")
