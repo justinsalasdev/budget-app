@@ -2,9 +2,9 @@ import { useGetBudget } from "../../contexts/BudgetProvider";
 import { useSetTimeline } from "../../contexts/TimeLineProvider";
 
 export default function useDay(key: string) {
-  const budget = useGetBudget();
+  const { budgets } = useGetBudget();
   const { updateTimeline } = useSetTimeline();
-  const items = budget.filter((item) => item.keys.includes(key));
+  const items = budgets.filter((item) => item.keys.includes(key));
 
   let sumExpenses = 0;
   let sumIncome = 0;

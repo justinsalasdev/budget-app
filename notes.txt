@@ -59,3 +59,20 @@ check if date included in dates array for each expense
 for each render
 time -> n cells * m expenses * o dates
 space -> m expenses * o dates
+
+
+timeline {
+    key : {
+        sE,
+        sT
+    }
+}
+
+
+{
+
+
+
+}
+
+timeline 
