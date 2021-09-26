@@ -32,7 +32,7 @@ export default function Calendar() {
         </ul>
         <ul className="bg-white grid grid-cols-7 grid-rows-6 gap-1 w-96 h-96 p-2 rounded-sm">
           {dates.map((date, i) => (
-            <Day dateObj={date} index={i} />
+            <Day dateObj={date} key={i} />
           ))}
         </ul>
       </div>

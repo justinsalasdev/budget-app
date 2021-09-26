@@ -5,6 +5,7 @@ import { Budget as _Budget } from "./budgetSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import BudgetForm from "./BudgetForm/BudgetForm";
 import Budget from "./Budget/Budget";
+import Insight from "./Insight/Insight";
 
 const dt = DateTime.local();
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
 
   return (
     <div>
+      <Insight />
       <Calendar />
       <FormProvider {...methods}>
         <BudgetForm />
