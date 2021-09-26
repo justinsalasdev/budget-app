@@ -4,7 +4,7 @@ import generateDates from "./generateDates";
 
 //prettier-ignore
 const monthNames = ['','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sep','Oct', 'Nov','Dec']
-const dayNames = ["S", "M", "T", "W", "TH", "F", "SA"];
+const dayNames = ["M", "T", "W", "TH", "F", "SA", "SN"];
 export default function useCalendar() {
   console.log("calendar renders");
   const { current: dt } = useRef<DateTime>(DateTime.local());

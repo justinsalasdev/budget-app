@@ -69,7 +69,7 @@ export default function BudgetProvider(props: Props) {
         keys.forEach((key) => {
           const daySum = _timeline[key];
           if (!daySum) {
-            _timeline[key] = { sumExpenses: 0, sumIncome: 0 };
+            _timeline[key] = { sumExpenses: expense, sumIncome: income };
           } else {
             _timeline[key].sumExpenses += expense;
             _timeline[key].sumIncome += income;
