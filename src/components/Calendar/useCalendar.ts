@@ -6,7 +6,6 @@ import generateDates from "./generateDates";
 const monthNames = ['','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sep','Oct', 'Nov','Dec']
 const dayNames = ["M", "T", "W", "TH", "F", "SA", "SN"];
 export default function useCalendar() {
-  console.log("calendar renders");
   const { current: dt } = useRef<DateTime>(DateTime.local());
   const [month, setMonth] = useState(dt.month);
   // eslint-disable-next-line

@@ -76,3 +76,18 @@ timeline {
 }
 
 timeline 
+
+
+insights
+upcoming expenses -  before next salary 
+
+if no salary
+upcoming expenses - until end of month 
+
+
+//total net this month
+
+
+
+while (dt.curr < dt. )
+
