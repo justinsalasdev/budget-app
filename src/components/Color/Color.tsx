@@ -8,7 +8,7 @@ export default function Color(props: Props) {
       className={`${props.color} grid place-items-center w-9 h-9 rounded-full shadow-md focus-within:ring-4 focus-within:ring-blue-200`}
     >
       <input
-        className="rounded-full"
+        className="rounded-full w-0 h-0"
         {...register(`color`)}
         type="radio"
         value={props.color}

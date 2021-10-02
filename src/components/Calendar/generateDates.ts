@@ -21,7 +21,7 @@ export default function generateDates(
       key: _dt.toISODate(),
       dateNum: _dt.day,
       isCurrMonth: _dt.month === month,
-      isCurrDay: _dt.day === currDt.day,
+      isCurrDay: _dt.month === month && _dt.day === currDt.day,
     });
     _dt = _dt.plus({ days: 1 });
   }
