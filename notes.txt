@@ -91,3 +91,7 @@ upcoming expenses - until end of month
 
 while (dt.curr < dt. )
 
+
+features
+have dedicated colors for income and expenses
+next and prev buttons on side of calendar <[ ]>

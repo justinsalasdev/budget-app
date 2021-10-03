@@ -6,7 +6,7 @@ import Adder from "./Adder/Adder";
 
 export default function App() {
   return (
-    <div>
+    <div className="grid">
       <Insight />
       <Calendar />
       <Adder />

@@ -1,19 +1,24 @@
 import { useGetBudget } from "../../contexts/BudgetProvider";
+import toCurrency from "../../helpers/toCurrency";
+import Item from "../Item/Item";
 
 export default function Budget() {
   const { budgets } = useGetBudget();
+  const income = budgets.filter((budget) => budget.type === "income");
+  const expenses = budgets.filter((budget) => budget.type === "expense");
+
   return (
-    <ul className="bg-white flex gap-2 p-2 max-w-2xl">
-      {budgets.map(({ id, name, amount, start, frequency, color, type }) => (
-        <li className={`p-2 rounded-sm shadow-md ${color}`} key={id}>
-          <p>{name}</p>
-          <p>{amount}</p>
-          <p>{start}</p>
-          <p>{frequency}</p>
-          <p>{color}</p>
-          <p>{type}</p>
-        </li>
-      ))}
-    </ul>
+    <div className="max-w-2xl">
+      <ul className="bg-white flex flex-col gap-2 p-2">
+        {income.map((item) => (
+          <Item key={item.id} {...item} />
+        ))}
+      </ul>
+      <ul className="bg-white flex flex-col gap-2 p-2">
+        {expenses.map((item) => (
+          <Item key={item.id} {...item} />
+        ))}
+      </ul>
+    </div>
   );
 }

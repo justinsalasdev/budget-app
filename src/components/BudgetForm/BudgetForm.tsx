@@ -7,6 +7,7 @@ export default function BudgetForm() {
   const { handleSubmit, register, isLoading } = useBudgetForm();
   return (
     <form
+      autoComplete="off"
       onSubmit={handleSubmit}
       className="rounded-sm bg-green-400 grid max-w-lg p-6 gap-2"
     >
@@ -15,11 +16,13 @@ export default function BudgetForm() {
         <Option id="type2" value="expense" name="type" />
       </div>
       <input
+        autoComplete="off"
         className="rounded-sm px-2 py-1"
         {...register("name")}
         placeholder="Name"
       />
       <input
+        autoComplete="off"
         className="rounded-sm px-2 py-1"
         {...register("amount")}
         placeholder="Amount"
