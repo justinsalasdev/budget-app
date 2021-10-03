@@ -1,5 +1,4 @@
 import { useGetBudget } from "../../contexts/BudgetProvider";
-import toCurrency from "../../helpers/toCurrency";
 import Item from "../Item/Item";
 
 export default function Budget() {
