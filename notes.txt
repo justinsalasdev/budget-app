@@ -95,3 +95,6 @@ while (dt.curr < dt. )
 features
 have dedicated colors for income and expenses
 next and prev buttons on side of calendar <[ ]>
+
+instead of responsive design
+//have the user adjust the view 
