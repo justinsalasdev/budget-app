@@ -31,7 +31,7 @@ export default function Insight() {
 
   console.log("insight-recomputes", timeline);
   return (
-    <div className="h-24 bg-pink-400 w-50">
+    <div className="h-24 bg-pink-400 w-50 col-start-1 col-span-full">
       {_expTillIncome}--
       {_exp}
     </div>

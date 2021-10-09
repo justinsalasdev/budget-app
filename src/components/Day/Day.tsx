@@ -3,6 +3,8 @@ import useDay from "./useDay";
 
 interface Props {
   dateObj: DateObj;
+  wC: string;
+  hC: string;
 }
 
 export default function Day(props: Props) {
@@ -11,7 +13,9 @@ export default function Day(props: Props) {
 
   return (
     <li
-      className={`bg-gray-100 text-gray-800 grid place-items-center rounded-sm relative ${
+      className={`${props.wC} ${
+        props.hC
+      } bg-gray-100 text-gray-800 grid place-items-center rounded-sm relative ${
         isCurrDay ? "font-bold" : ""
       }`}
     >

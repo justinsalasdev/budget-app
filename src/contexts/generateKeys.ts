@@ -5,7 +5,16 @@ const yearRange = 1;
 
 export default function generateKeys(start: string, freq: Freq) {
   let dtStart = DateTime.fromISO(start);
-  const endDate = dtStart.plus({ years: yearRange });
+  const startDayNum = dtStart.day;
+
+  const dtCurr = DateTime.local();
+  const currMonthNum = dtCurr.month;
+  const currYearNum = dtCurr.year;
+
+  //always start key generation in curr month
+  let dtBegin = DateTime.local(currYearNum, currMonthNum, startDayNum);
+
+  const endDate = dtBegin.plus({ years: yearRange });
   const keys: string[] = [];
   const intervals: { [key in Freq]: DurationObjectUnits } = {
     weekly: { weeks: 1 },
@@ -13,10 +22,10 @@ export default function generateKeys(start: string, freq: Freq) {
     annual: { years: 1 },
   };
 
-  while (dtStart <= endDate) {
-    const key = dtStart.toISODate();
+  while (dtBegin <= endDate) {
+    const key = dtBegin.toISODate();
     keys.push(key);
-    dtStart = dtStart.plus(intervals[freq]);
+    dtBegin = dtBegin.plus(intervals[freq]);
   }
 
   return keys;

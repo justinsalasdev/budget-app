@@ -5,10 +5,13 @@ export default function Item(props: Budget) {
   const { color, id, name, amount, frequency } = props;
   return (
     <li
-      className={`p-2 rounded-sm shadow-md ${color} grid grid-cols-3 grid-rows-2 items-center h-16`}
+      className={`p-3 rounded-sm shadow-md grid grid-cols-3 grid-rows-2 items-center`}
       key={id}
     >
-      <p className="text-lg font-bold">{name}</p>
+      <p className="text-lg font-bold flex items-center">
+        <span className={`${color} block w-4 h-4 mr-2 rounded-full`}></span>
+        {name}
+      </p>
       <p className="row-start-2">
         PHP {toCurrency(amount)} {frequency}
       </p>
