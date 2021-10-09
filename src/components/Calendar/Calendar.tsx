@@ -1,41 +1,33 @@
 import Days from "../Days/Days";
 import useCalendar from "./useCalendar";
-
-const wC = "w-20";
-const hC = "h-20";
+import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
+import Control from "./Control";
 
 export default function Calendar() {
-  const { dates, monthName, dayNames, year, nextMonth, prevMonth } =
+  const { dates, monthName, dayNames, year, nextMonth, prevMonth, currMonth } =
     useCalendar();
 
   return (
-    <div className="w-full grid content-start justify-items-center">
-      <div className="flex gap-2 ">
-        <p>{year}</p>
+    <div className="grid content-start justify-items-center mb-auto ml-auto">
+      <div className="flex justify-center gap-2 p-3 bg-gray-700 w-full rounded-t-md">
+        <Control icon={MdNavigateBefore} handler={prevMonth} />
         <button
-          onClick={prevMonth}
-          className="bg-purple-400 w-28 py-1 rounded-sm"
+          onClick={currMonth}
+          className="text-gray-800 uppercase bg-gray-50 py-2 px-3 rounded-sm"
         >
-          prev month
+          {year} {monthName}
         </button>
-
-        <p className="text-gray-200">{monthName}</p>
-        <button
-          onClick={nextMonth}
-          className="bg-purple-400 w-28 py-1 rounded-sm"
-        >
-          next month
-        </button>
+        <Control icon={MdNavigateNext} handler={nextMonth} />
       </div>
-      <div>
-        <ul className="grid grid-cols-7 bg-white place-items-center">
+      <div className="rounded-md">
+        <ul className="grid grid-cols-7 bg-white place-items-center p-3 pb-0">
           {dayNames.map((dayName, i) => (
-            <li className={`${wC} text-center`} key={i}>
+            <li className={`w-day text-center`} key={i}>
               {dayName}
             </li>
           ))}
         </ul>
-        <Days dates={dates} wC={wC} hC={hC} />
+        <Days dates={dates} />
       </div>
     </div>
   );

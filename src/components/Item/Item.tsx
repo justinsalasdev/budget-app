@@ -13,7 +13,10 @@ export default function Item(props: Budget) {
         {name}
       </p>
       <p className="row-start-2">
-        PHP {toCurrency(amount)} {frequency}
+        PHP {toCurrency(amount)}{" "}
+        <span className="text-gray-500 text-xs uppercase block">
+          {frequency}
+        </span>
       </p>
     </li>
   );

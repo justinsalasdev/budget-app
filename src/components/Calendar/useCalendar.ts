@@ -11,6 +11,11 @@ export default function useCalendar() {
   // eslint-disable-next-line
   const [year, setYear] = useState(dt.year);
 
+  const currMonth = () => {
+    setYear(dt.year);
+    setMonth(dt.month);
+  };
+
   const nextMonth = () => {
     if (month >= 12) {
       setYear((_year) => _year + 1);
@@ -38,5 +43,6 @@ export default function useCalendar() {
     year,
     nextMonth,
     prevMonth,
+    currMonth,
   };
 }

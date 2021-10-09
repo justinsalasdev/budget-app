@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.h-day {
+  @apply h-20;
+}
+
+.w-day {
+  @apply w-20;
+}
+
+.square {
+  aspect-ratio: 1 / 1;
+}

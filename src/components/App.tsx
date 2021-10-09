@@ -5,11 +5,14 @@ import Insight from "./Insight/Insight";
 
 export default function App() {
   return (
-    <div className="grid content-start grid-cols-2">
+    <div className="grid content-start justify-self-center pt-4">
       <Insight />
-      <Calendar />
-      {/* <Adder /> */}
-      <Budget />
+
+      <div className="mt-4 grid gap-4 grid-cols-2">
+        <Calendar />
+        {/* <Adder /> */}
+        <Budget />
+      </div>
     </div>
   );
 }

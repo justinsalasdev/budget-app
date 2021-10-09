@@ -7,7 +7,7 @@ export default function Budget() {
   const expenses = budgets.filter((budget) => budget.type === "expense");
 
   return (
-    <div className="max-w-2xl bg-white p-4 rounded-md">
+    <div className="w-full">
       <Items items={income} title="Income" />
       <Items items={expenses} title="Expenses" />
     </div>
