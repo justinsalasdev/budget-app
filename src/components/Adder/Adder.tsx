@@ -11,7 +11,7 @@ type Param = {
 
 const dt = DateTime.local();
 export default function Adder(props: RouteComponentProps<Param>) {
-  const params = props.match?.params;
+  const params = props.match?.params || { type: "expense" };
   const methods = useForm({
     mode: "onChange",
     resolver: zodResolver(_Budget),

@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         "1aa": "1fr auto auto",
+        a1a: "auto 1fr auto",
       },
     },
   },
