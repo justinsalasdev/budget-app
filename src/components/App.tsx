@@ -16,7 +16,7 @@ export default function App() {
 
         <Switch>
           <Route exact path="/" component={Budget} />
-          <Route path="/add" component={Adder} />
+          <Route path="/add/:type" component={Adder} />
         </Switch>
       </div>
     </div>

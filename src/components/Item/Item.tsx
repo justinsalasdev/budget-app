@@ -8,7 +8,7 @@ export default function Item(props: Budget) {
       className={`p-3 rounded-sm shadow-md grid grid-cols-3 grid-rows-2 items-center`}
       key={id}
     >
-      <p className="text-lg font-bold flex items-center">
+      <p className="text-lg font-semibold flex items-center">
         <span className={`${color} block w-4 h-4 mr-2 rounded-full`}></span>
         {name}
       </p>

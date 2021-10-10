@@ -8,8 +8,8 @@ export default function Budget() {
 
   return (
     <div className="w-full">
-      <Items items={income} title="Income" />
-      <Items items={expenses} title="Expenses" />
+      <Items items={income} type="income" />
+      <Items items={expenses} type="expense" />
     </div>
   );
 }

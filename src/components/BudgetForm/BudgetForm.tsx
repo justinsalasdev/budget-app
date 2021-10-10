@@ -13,7 +13,7 @@ export default function BudgetForm() {
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
-      className="rounded-sm bg-gray-50 grid content-start max-w-lg p-6 gap-3 mb-auto"
+      className="rounded-md bg-gray-50 grid content-start max-w-lg p-6 gap-3 mb-auto"
     >
       <div className="grid grid-cols-1aa gap-2 mb-2">
         <Link
@@ -47,7 +47,7 @@ export default function BudgetForm() {
       <Colors />
       <button
         disabled={isLoading}
-        className="bg-purple-400 py-2 mt-2 rounded-sm uppercase text-gray-100"
+        className="bg-purple-400 py-2 mt-2 rounded-sm rounded-b-md uppercase text-gray-100"
         type="submit"
       >
         Save
