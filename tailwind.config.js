@@ -5,7 +5,12 @@ module.exports = {
     fontFamily: {
       sans: ["Prompt"],
     },
-    extend: {},
+
+    extend: {
+      gridTemplateColumns: {
+        "1aa": "1fr auto auto",
+      },
+    },
   },
   variants: {
     extend: {},

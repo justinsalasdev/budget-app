@@ -1,41 +1,19 @@
-import { useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { _Budget } from "../budgetSchema";
 
 export default function Date() {
-  const { register } = useFormContext();
-  const [custom, setCustom] = useState(false);
-  function showCustom() {
-    setCustom(true);
-  }
-  function hideCustom() {
-    setCustom(false);
-  }
+  const { register } = useFormContext<_Budget>();
+
   return (
-    <>
-      <div className="flex items-center gap-2">
-        <p className="uppercase">Starts</p>
-        <button
-          className="bg-blue-400 py-1 w-24"
-          type="button"
-          onClick={hideCustom}
-        >
-          now
-        </button>
-        <button
-          className="bg-blue-400 py-1 w-24"
-          type="button"
-          onClick={showCustom}
-        >
-          custom
-        </button>
-      </div>
-      {custom && (
-        <input
-          className="rounded-sm px-2 py-1"
-          type="date"
-          {...register("start")}
-        />
-      )}
-    </>
+    <div className="flex flex-col mt-2">
+      <label className="pl-1 text-gray-600 uppercase text-sm mb-1">
+        Starts
+      </label>
+      <input
+        className="rounded-sm px-2 py-1 w-full text-gray-400"
+        type="date"
+        {...register("start")}
+      />
+    </div>
   );
 }

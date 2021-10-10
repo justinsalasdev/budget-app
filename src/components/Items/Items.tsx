@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Budget } from "../../contexts/BudgetProvider";
 import Item from "../Item/Item";
 
@@ -11,6 +12,9 @@ export default function Items(props: Props) {
           <Item key={item.id} {...item} />
         ))}
       </ul>
+      <Link to="/add" className="text-blue-400">
+        add
+      </Link>
     </div>
   );
 }

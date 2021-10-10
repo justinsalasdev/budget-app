@@ -10,7 +10,7 @@ export default function Insight() {
   return (
     <div className="bg-gray-50 p-6 rounded-md">
       <h3 className="uppercase ">
-        <span className="text-lg">Your net this {currMonthName} is </span>
+        <span className="text-lg">{currMonthName} net </span>
         <span
           className={`text-3xl font-semibold ${
             net < 0 ? "text-red-500" : "text-green-400"

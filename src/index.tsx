@@ -4,12 +4,15 @@ import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import BudgetProvider from "./contexts/BudgetProvider";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BudgetProvider>
-      <App />
-    </BudgetProvider>
+    <BrowserRouter>
+      <BudgetProvider>
+        <App />
+      </BudgetProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

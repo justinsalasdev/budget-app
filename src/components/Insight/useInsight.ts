@@ -16,6 +16,7 @@ export default function useInsight() {
     monthExp: 0,
     monthIncome: 0,
   });
+
   const { timeline } = useGetBudget();
 
   const dtCurr = DateTime.local();
@@ -41,12 +42,13 @@ export default function useInsight() {
       const expense = timeline[_dt.toISODate()]?.sumExpenses || 0;
       const income = timeline[_dt.toISODate()]?.sumIncome || 0;
 
-      //if key with income is hit, stop adding to expTillIncome
-      if (income) {
-        incomeHit = true;
-      }
       if (!incomeHit) {
         expTillIncome += expense;
+      }
+      //if key with income is hit, stop adding to expTillIncome
+      //include expense on payday
+      if (income) {
+        incomeHit = true;
       }
 
       monthIncome += income;
