@@ -1,5 +1,4 @@
 import Calendar from "./Calendar/Calendar";
-import { Budget as _Budget } from "./budgetSchema";
 import Budget from "./Budget/Budget";
 import Insight from "./Insight/Insight";
 import { Route, Switch } from "react-router";
@@ -17,6 +16,7 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Budget} />
           <Route path="/add/:type" component={Adder} />
+          <Route path="/edit" component={Adder} />
         </Switch>
       </div>
     </div>

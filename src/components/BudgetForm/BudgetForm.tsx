@@ -6,9 +6,12 @@ import Option from "../Option/Option";
 import useBudgetForm from "./useBugdetForm";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
-export default function BudgetForm() {
-  const { handleSubmit, register, isLoading } = useBudgetForm();
+type Props = { id?: string };
 
+export default function BudgetForm(props: Props) {
+  const { handleSubmit, register, isLoading, isDirty } = useBudgetForm(
+    props.id
+  );
   return (
     <form
       autoComplete="off"
@@ -46,11 +49,11 @@ export default function BudgetForm() {
       <Date />
       <Colors />
       <button
-        disabled={isLoading}
-        className="bg-purple-400 py-2 mt-2 rounded-sm rounded-b-md uppercase text-gray-100"
+        disabled={isLoading || !isDirty}
+        className="uppercase bg-purple-400 disabled:bg-gray-300 py-2 mt-2 rounded-sm rounded-b-md uppercase text-gray-100"
         type="submit"
       >
-        Save
+        {props.id ? "save changes" : "save"}
       </button>
     </form>
   );

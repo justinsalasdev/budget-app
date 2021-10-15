@@ -60,7 +60,6 @@ export default function BudgetProvider(props: Props) {
         //generate keys for calendar view
         const keys = generateKeys(data.start, data.frequency);
         _data.push({ ...data, id, keys });
-        console.log("keys", keys);
         //build timeline for analytics
         const income = data.type === "income" ? data.amount : 0;
         const expense = data.type === "expense" ? data.amount : 0;

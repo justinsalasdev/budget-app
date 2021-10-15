@@ -5,9 +5,9 @@ const zodBudgetType = z.enum(["income", "expense"]);
 
 export type Freq = z.infer<typeof zodFreq>;
 export type BudgetType = z.infer<typeof zodBudgetType>;
-export type _Budget = z.infer<typeof Budget>;
+export type _Budget = z.infer<typeof zodBudget>;
 
-export const Budget = z.object({
+export const zodBudget = z.object({
   type: zodBudgetType,
   name: z.string().nonempty({ message: "name is required" }),
   amount: z.preprocess(

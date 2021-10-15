@@ -25,8 +25,8 @@ export default function Item(props: Budget) {
         due in{" "}
       </p>
       <div className="col-start-3 row-start-2 flex items-center gap-2 justify-self-end">
-        <Action icon={FiEdit3} type="edit" />
-        <Action icon={RiDeleteBin7Line} type="delete" />
+        <Action icon={FiEdit3} type="edit" data={props} />
+        <Action icon={RiDeleteBin7Line} type="delete" data={props} />
       </div>
     </li>
   );
