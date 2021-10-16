@@ -11,7 +11,7 @@ const firebaseConfig = {
   appId: "1:945739688826:web:0b1e24b6abbbf9dc8144c3",
   measurementId: "G-VMCFKPTWC6",
 };
-
+//eslint-disable-next-line
 const app = initializeApp(firebaseConfig);
 export const provider = new GoogleAuthProvider();
 export const auth = getAuth();

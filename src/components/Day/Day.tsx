@@ -13,7 +13,7 @@ export default function Day(props: Props) {
   return (
     <li
       className={`h-day w-day  ${
-        isCurrMonth ? "bg-gray-300" : "bg-gray-100"
+        isCurrMonth ? "border bg-gray-50" : "bg-white"
       } text-gray-800 grid place-items-center rounded-sm relative ${
         isCurrDay ? "font-bold" : ""
       }`}

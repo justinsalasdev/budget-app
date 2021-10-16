@@ -9,7 +9,7 @@ export default function Widgets(props: Props) {
     <ul className={`${props.classes} flex absolute left-0 gap-1 p-2 w-full`}>
       {props.items.map((item) => (
         <li
-          className={`${item.color} w-2/12 square rounded-full `}
+          className={`${item.color} w-2/12 square rounded-full`}
           key={item.id}
         ></li>
       ))}

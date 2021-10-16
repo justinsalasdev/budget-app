@@ -4,7 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { RouteComponentProps } from "react-router-dom";
 import { Budget } from "../../contexts/BudgetProvider";
 import BudgetForm from "../BudgetForm/BudgetForm";
-import { zodBudget, _Budget, BudgetType } from "../budgetSchema";
+import { zodBudget, BudgetType } from "../budgetSchema";
 
 type Param = {
   type: BudgetType;

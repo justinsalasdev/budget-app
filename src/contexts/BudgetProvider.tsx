@@ -45,8 +45,6 @@ export default function BudgetProvider(props: Props) {
   const [budgets, setBudgets] = useState<Budget[]>([]);
   const [timeline, setTimeline] = useState<Timeline>({});
 
-  console.log(timeline);
-
   useEffect(() => {
     const _ref = collection(db, "budget").withConverter(budgetConverter);
     const q = query(_ref);

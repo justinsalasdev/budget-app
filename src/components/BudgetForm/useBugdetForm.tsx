@@ -8,17 +8,15 @@ import { _Budget } from "../budgetSchema";
 export default function useBudgetForm(id?: string) {
   const { register, handleSubmit, formState } = useFormContext();
   const history = useHistory();
-  const { isSubmitting, errors, isDirty } = formState;
+  const { isSubmitting, isDirty } = formState;
 
   const onSubmit: SubmitHandler<_Budget> = async (data) => {
-    console.log(errors, isSubmitting, id);
     try {
       const _ref = collection(db, "budget").withConverter(budgetConverter);
-      const docRef = await addDoc(_ref, data);
-      console.log("Document written with ID: ", docRef.id);
+      await addDoc(_ref, data);
       history.push("/");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -28,7 +26,7 @@ export default function useBudgetForm(id?: string) {
       await updateDoc(_ref, data);
       history.push("/");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

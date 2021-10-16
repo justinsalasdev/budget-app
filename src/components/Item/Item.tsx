@@ -8,10 +8,10 @@ export default function Item(props: Budget) {
   const { color, id, name, amount, frequency } = props;
   return (
     <li
-      className={`p-3 rounded-sm shadow-md grid grid-cols-a1a grid-rows-2 items-center`}
+      className={`p-3 pt-0 rounded-md shadow-md border grid grid-cols-2 grid-rows-2 items-center`}
       key={id}
     >
-      <p className="text-lg font-semibold flex items-center">
+      <p className="text-lg text-gray-600 font-semibold flex items-center">
         <span className={`${color} block w-4 h-4 mr-2 rounded-full`}></span>
         {name}
       </p>
@@ -21,13 +21,9 @@ export default function Item(props: Budget) {
           {frequency}
         </span>
       </p>
-      <p className="col-start-3 bg-gray-200 px-3 py-1 rounded-full text-xs text-gray-400">
-        due in{" "}
-      </p>
-      <div className="col-start-3 row-start-2 flex items-center gap-2 justify-self-end">
-        <Action icon={FiEdit3} type="edit" data={props} />
-        <Action icon={RiDeleteBin7Line} type="delete" data={props} />
-      </div>
+
+      <Action icon={FiEdit3} type="edit" data={props} />
+      <Action icon={RiDeleteBin7Line} type="delete" data={props} />
     </li>
   );
 }
