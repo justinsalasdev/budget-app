@@ -50,7 +50,7 @@ export default function BudgetForm(props: Props) {
       <Colors />
       <button
         disabled={isLoading || !isDirty}
-        className="uppercase bg-purple-400 disabled:bg-gray-300 py-2 mt-2 rounded-sm rounded-b-md uppercase text-gray-100"
+        className="uppercase bg-purple-400 disabled:bg-gray-300 py-2 mt-2 rounded-sm uppercase text-gray-100"
         type="submit"
       >
         {props.id ? "save changes" : "save"}

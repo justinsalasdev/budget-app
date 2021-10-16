@@ -3,8 +3,16 @@ import Items from "../Items/Items";
 
 export default function Budget() {
   const { budgets } = useGetBudget();
-  const income = budgets.filter((budget) => budget.type === "income");
-  const expenses = budgets.filter((budget) => budget.type === "expense");
+
+  const income = [];
+  const expenses = [];
+  for (let budget of budgets) {
+    if (budget.type === "income") {
+      income.push(budget);
+    } else {
+      expenses.push(budget);
+    }
+  }
 
   return (
     <div className="w-full">

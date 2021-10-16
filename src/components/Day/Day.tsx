@@ -1,5 +1,6 @@
 import { DateObj } from "../Calendar/types";
 import useDay from "./useDay";
+import Widgets from "./Widgets";
 
 interface Props {
   dateObj: DateObj;
@@ -7,7 +8,7 @@ interface Props {
 
 export default function Day(props: Props) {
   const { key, dateNum, isCurrDay, isCurrMonth } = props.dateObj;
-  const { items } = useDay(key);
+  const { income, expenses } = useDay(key);
 
   return (
     <li
@@ -18,14 +19,8 @@ export default function Day(props: Props) {
       }`}
     >
       {dateNum < 10 ? `0${dateNum}` : `${dateNum}`}
-      <ul className="absolute bottom-0 left-0 flex gap-1 p-2 w-full">
-        {items.map((item) => (
-          <li
-            className={`${item.color} w-2/12 square rounded-full `}
-            key={item.id}
-          ></li>
-        ))}
-      </ul>
+      <Widgets items={income} classes="flex-wrap top-0" />
+      <Widgets items={expenses} classes="flex-wrap-reverse bottom-0" />
     </li>
   );
 }

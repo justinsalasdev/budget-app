@@ -20,7 +20,7 @@ interface DaySums {
   sumIncome: number;
 }
 
-interface Timeline {
+export interface Timeline {
   [index: string]: DaySums;
 }
 
@@ -44,6 +44,8 @@ const getContext = createContext<GetValue>(initialState);
 export default function BudgetProvider(props: Props) {
   const [budgets, setBudgets] = useState<Budget[]>([]);
   const [timeline, setTimeline] = useState<Timeline>({});
+
+  console.log(timeline);
 
   useEffect(() => {
     const _ref = collection(db, "budget").withConverter(budgetConverter);

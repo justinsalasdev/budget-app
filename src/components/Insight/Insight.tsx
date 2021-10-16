@@ -5,8 +5,8 @@ import useInsight from "./useInsight";
 
 export default function Insight() {
   const currMonthName = DateTime.local().monthLong;
-  const { expTillIncome, expTillEnd, monthExp, monthIncome } = useInsight();
-  const net = monthIncome - monthExp;
+  const { income, expenses, endExpenses } = useInsight();
+  const net = income - expenses;
   return (
     <div className="bg-gray-50 p-6 rounded-md">
       <h3 className="uppercase ">
@@ -19,11 +19,10 @@ export default function Insight() {
           ₱{toCurrency(net)}
         </span>
       </h3>
-      <ul className="grid grid-cols-4 gap-4 mt-4">
-        <Item description="expenses until next payday" amount={expTillIncome} />
-        <Item description="remaining expenses" amount={expTillEnd} />
-        <Item description="total expense" amount={monthExp} />
-        <Item description="total income" amount={monthIncome} />
+      <ul className="grid grid-cols-3 gap-4 mt-4">
+        <Item description="total income" amount={income} />
+        <Item description="total expense" amount={expenses} />
+        <Item description="remaining expenses" amount={endExpenses} />
       </ul>
     </div>
   );

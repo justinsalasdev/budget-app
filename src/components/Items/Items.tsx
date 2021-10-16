@@ -8,6 +8,7 @@ type Props = { items: Budget[]; type: BudgetType };
 
 export default function Items(props: Props) {
   const title = props.type === "income" ? "Income" : "Expenses";
+  const isEmpty = props.items.length <= 0;
   return (
     <div className="relative rounded-t-md overflow-hidden">
       <Link
@@ -19,10 +20,14 @@ export default function Items(props: Props) {
       <h3 className="p-4 bg-gray-600 uppercase text-xl text-gray-50">
         {title}
       </h3>
+
       <ul className="bg-white flex flex-col gap-2 p-2 mb-4 p-4 rounded-b-md">
-        {props.items.map((item) => (
-          <Item key={item.id} {...item} />
-        ))}
+        {(!isEmpty &&
+          props.items.map((item) => <Item key={item.id} {...item} />)) || (
+          <span className="uppercase text-center text-gray-400">
+            no items yet
+          </span>
+        )}
       </ul>
     </div>
   );
