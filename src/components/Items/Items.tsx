@@ -9,12 +9,13 @@ type Props = { items: Budget[]; type: BudgetType };
 
 export default function Items(props: Props) {
   const { url } = useRouteMatch();
+  console.log(url);
   const title = props.type === "income" ? "Income" : "Expenses";
   const isEmpty = props.items.length <= 0;
   return (
     <div className="relative rounded-t-md overflow-hidden">
       <Link
-        to={`${dash.add}/${props.type}`}
+        to={`${url}${dash.add}/${props.type}`}
         className="absolute right-4 top-4 bg-purple-300 p-2 rounded-full shadow-sm"
       >
         <AiOutlinePlus />

@@ -1,6 +1,6 @@
 export enum routes {
   dash = "/",
-  login = "login",
+  login = "/login",
 }
 
 export enum dash {
